@@ -41,6 +41,21 @@ console.log('[LAB 1] effect');
 
 useEffect를 이용하여 타이머를 관리한다. running을 [] 에 넣어서 그 값이 변경되면 이펙트가 다시 실행되도록 한다. 만약 그 값이 true이면 타이머를 실행하고, false값이면 실행하지 않는다. 마지막으로 클린업을 통해 기존의 타이머 기능을 종료함으로써 중복실행을 방지한다.
 
+const timerRef = useRef(null);
+
+const start = () => {
+if (timerRef.current !== null) return;
+
+    timerRef.current = setInterval(() => {
+        setCount(prev => prev + 1);
+    }, 1000);
+
+    setRunning(true);
+
+};
+
+타이머 id를 저장해 놓을 공간을 생성한다. 그리고 timerRef.current에 저장된 값이 있다면, 중복실행이 방지된다. setInterval 부분은 1초마다 count 값을 증가시킨다. 아까 생성된 id를 timerRef.current에 저장한다. setRunning(true) 부분은 타이머를 화면에 출력하는 기능을 담당한다.
+
 # useEffect의 Dependency Array가 필요한 이유는?
 
 이펙트가 또 언제 실행될지를 React에게 고지하기 위해 필요하다.
@@ -54,6 +69,8 @@ useEffect를 이용하여 타이머를 관리한다. running을 [] 에 넣어서
 값이 변경되었을 때 useState는 리렌더링이 발생하고, useRef는 리렌더링이 발생하지 않는다는 차이다.
 
 # LAB 2와 LAB 4의 Timer 관리 방식은 어떻게 다른가?
+
+먼저 2번은 useEffect를 쓰고, 4번은 useRef를 쓴다는 점에서 큰 차이가 있다. 2번은 타이머를 시작하고 종료하는 데에 running 과 cleanup을 사용하지만, 4번은 시작과 종료 함수를 사용한다. 즉 2번은 이펙트 중심이고 4번은 Ref를 이용하여 직접 관리하는 방식이라는 점에서 차이가 있다.
 
 ## 수행 방법
 
