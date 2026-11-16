@@ -1,9 +1,11 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 // LAB 3 (Slide 15): Input Focus with useRef
 export default function Lab3InputFocus() {
   // TODO 1: input DOM을 참조할 inputRef 생성 (초기값 null)
   const inputRef = useRef(null);
+
+  const [message, setMessage] = useState('');
 
   const focusInput = () => {
     // TODO 2: ref.current를 이용해 input에 focus()
@@ -13,7 +15,18 @@ export default function Lab3InputFocus() {
   const clearInput = () => {
     // TODO 3: input의 값을 지우고 다시 Focus
     inputRef.current.value = '';
+    setMessage('');
     inputRef.current.focus();
+  };
+
+    const checkInput = () => {
+    const value = inputRef.current.value.trim();
+
+    if (value.length < 2) {
+      setMessage('이름을 2글자 이상 입력하세요.');
+    } else {
+      setMessage('검증 완료');
+    }
   };
 
   return (
@@ -24,8 +37,10 @@ export default function Lab3InputFocus() {
         ref={inputRef} />
       <div className="controls">
         <button onClick={focusInput}>Focus</button>
+        <button onClick={checkInput}>Check</button>
         <button className="secondary" onClick={clearInput}>Clear</button>
       </div>
+      <p className="hint">{message}</p>
     </div>
   );
 }

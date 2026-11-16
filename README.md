@@ -1,6 +1,6 @@
-# OSS Week 12 — React Hooks Playground (Student Starter)
+# Project Information: OSS Week 12 — React Hooks Playground (Student Starter)
 
-## 실행 방법
+## Installation: 실행 방법
 
 Node.js 20.19+ 또는 22.12+ 권장. 프로젝트 폴더에서 실행:
 
@@ -11,9 +11,14 @@ npm run dev
 
 브라우저에 터미널의 Local URL을 열고 LAB 탭을 이동하세요. 제출 전 `npm run build`도 실행하세요.
 
+## Source Code Exploration
+
 # Project Structure: App.jsx와 주요 Lab 컴포넌트의 역할
 
 이 react 프로젝트의 메인 컴포넌트를 담당한다. State를 활용하여 선택된 Lab을 관리한다. 버튼을 누르면 Lab 컴포넌트가 화면에 프린트 되도록 한다. 그 Lab 을 배열(1,2,3,4) 로 관리한다.
+components: useEffect와 useRef를 활용한 4가지 실습 파일로 구성된다
+App.css: 프로젝트의 전체적인 디자인과 스타일을 담당한다
+package.json: React 프로젝트 실행에 필요한 라이브러리와 명령어를 관리한다
 
 # useEffect: Effect, Dependency Array 및 Cleanup의 동작 원리
 
@@ -56,6 +61,15 @@ if (timerRef.current !== null) return;
 
 타이머 id를 저장해 놓을 공간을 생성한다. 그리고 timerRef.current에 저장된 값이 있다면, 중복실행이 방지된다. setInterval 부분은 1초마다 count 값을 증가시킨다. 아까 생성된 id를 timerRef.current에 저장한다. setRunning(true) 부분은 타이머를 화면에 출력하는 기능을 담당한다.
 
+# Lab Implementation: 4개 Lab 구현 내용 및 실행 결과
+
+Lab 1: 자동으로 숫자가 증가한다. useEffect을 사용하였다.
+Lab 2: 타이머 시작, 중지, 초기화하는 기능이 있다. useEffect, useState을 사용하였다.
+Lab 3: 입력창 포커스 및 삭제 기능이 있다. useRef을 사용하였다.
+Lab 4: 타이머를 직접 관리한다. useRef, useEffect, useState을 사용하였다.
+
+# Lab Comparison
+
 # useEffect의 Dependency Array가 필요한 이유는?
 
 이펙트가 또 언제 실행될지를 React에게 고지하기 위해 필요하다.
@@ -90,6 +104,7 @@ font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", s
 background: #71e950;
 color: #18243a;
 }
+
 기존 #f5f7fb에서 #71e950; 변경했다
 
 .tab {
@@ -117,6 +132,29 @@ color: #e0eaff;
 }
 
 기존보다 버튼 모서리 둥글게 만들고, LAB 버튼은 파란색 배경과 흰색 글씨로 표시되도록 변경했다.
+
+## 추가기능
+
+Timer 실행 상태 표시 [완료]
+Timer Count를 분/초 형식으로 표시 [완료]
+Input 값 검증 기능 [완료]
+새로운 Hook 활용 기능 [완료]
+
+# Deployment
+
+Vercel\_https://oss-personal9.vercel.app/
+Github\_https://github.com/2026-2-OSS/assign12-c02-22300783
+
+# Weekly Review
+
+useEffect를 사용하면 컴포넌트가 실행될 때 타이머와 같은 작업을 관리할 수 있다는 것을 배웠다.
+Cleanup을 사용하면 타이머가 불필요하게 실행되는 것(누수)을 방지할 수 있다는 것을 배웠다.
+useRef를 사용하면 화면을 다시 렌더링하지 않고 값을 저장할 수 있다는 것을 배웠다.
+
+처음 보는 문법을 사용하는 것이 처음에는 어려웠다. ex) = () =>
+그러나 vscode의 자동완성 기능 덕분에 큰 문제 없이 코드를 완성할 수 있었다.
+
+추가기능을 구현하는 데에 있어 AI를 활용하였다. 이번 과제자체는 양이 그렇게 많지 않아 구조를 이해하는 데 어려움이 없었다. 컴포넌트의 분할적 특징덕분에 한결 더 수월하게 분석이 가능했다. 이해하는 데에 있어 AI를 활용해 쉽게 이해할 수 있어 좋았다.
 
 ## 수행 방법
 

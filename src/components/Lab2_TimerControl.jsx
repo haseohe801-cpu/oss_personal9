@@ -1,10 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo} from 'react';
 
 // LAB 2 (Slide 10): Timer Start / Stop / Reset
 export default function Lab2TimerControl() {
   const [count, setCount] = useState(0);
   const [running, setRunning] = useState(false);
+  const time = useMemo(() => {
+  const minutes = Math.floor(count / 60);
+  const seconds = count % 60;
 
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  }, [count]);
   useEffect(() => {
     // TODO 1: running이 false면 타이머를 만들지 않기
     // TODO 2: running이 true면 setInterval로 1초마다 count 증가
@@ -31,7 +36,7 @@ export default function Lab2TimerControl() {
   return (
     <div>
       <p className="status">상태: {running ? 'Running' : 'Stopped'}</p>
-      <div className="count">{count}</div>
+      <div className="count">{time}</div>
       <div className="controls">
         <button onClick={() => setRunning(true)} disabled={running}>Start</button>
         <button className="secondary" onClick={() => setRunning(false)} disabled={!running}>Stop</button>
