@@ -66,11 +66,14 @@ body {
 }
 
 .tab.active {
-    background: #e8efff;
-    border-color: #587ee3;
-    color: #214bb1;
+    background: #285bc7;
+    border-color: #285bc7;
+    color: white;
 }
 
+.tab.active span {
+    color: #e0eaff;
+}
 
 .lab-panel {
     min-height: 345px;
