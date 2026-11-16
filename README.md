@@ -1,6 +1,7 @@
 # OSS Week 12 — React Hooks Playground (Student Starter)
 
 ## 실행 방법
+
 Node.js 20.19+ 또는 22.12+ 권장. 프로젝트 폴더에서 실행:
 
 ```bash
@@ -10,14 +11,37 @@ npm run dev
 
 브라우저에 터미널의 Local URL을 열고 LAB 탭을 이동하세요. 제출 전 `npm run build`도 실행하세요.
 
+# Project Structure: App.jsx와 주요 Lab 컴포넌트의 역할
+
+이 react 프로젝트의 메인 컴포넌트를 담당한다. State를 활용하여 선택된 Lab을 관리한다. 버튼을 누르면 Lab 컴포넌트가 화면에 프린트 되도록 한다. 그 Lab 을 배열(1,2,3,4) 로 관리한다.
+
+# useEffect: Effect, Dependency Array 및 Cleanup의 동작 원리
+
+이펙트는 화면이 모두 렌더링 된 후 동작하는 부분이고, 타이머를 실행하고나 데이터를 가져오는 데에 쓰인다. Dependency는 3가지 형태로 동작한다. 첫번째는 렌더링될 때마다 실행하고, 두번째는 처음 콜링...마운트 될때 실행하고, 세번째는 running 값이 변경될 때 실행되는 것이다. (useEffect(() => {}) / useEffect(() => {}, []) / useEffect(() => {}, [running])) cleanup은 설명했던 이펙트 안에서 실행됐던 프로세스를 정리한다. clearInterval()로 타이머를 종료한다. 언마운트될 때도 Cleanup이 실행된다. 즉, 불필요한 타이머 실행을 막는 동작 원리이다.
+
+# useRef: .current 속성과 useState의 차이
+
+current 속성은 useRef로 객체가 생성되면 그 값을 저장한다. 이 속성을 사용해서 그 값을 변경할 수 있다. 단, 값이 바뀌어도 컴포넌트가 리렌더링 되지 않는다. useState도 값 저장이 가능하지만, 화면이 리렌더링이 된다는 점에서 차이가 있다. 그리고 useState는 비동기이고, current는 동기(즉시)이다.
+
+# Code Analysis: useEffect와 useRef 관련 주요 코드 각 1개(5~15줄)를 선택하여 동작 원리 설명
+
+useEffect(() => {
+// running이 false면 타이머를 만들지 않음
+// running이 true면 setInterval로 1초마다 count 증가
+// Cleanup에서 clearInterval 호출
+}, [running]);
+
+useEffect를 이용하여 타이머를 관리한다.
+
 ## 수행 방법
+
 1. `src/components/` 아래의 LAB 1~4 파일에 있는 `TODO`를 직접 완성합니다.
 2. `src/App.jsx`, `src/App.css`는 공통 화면이므로 가급적 수정하지 않습니다.
 3. 각 LAB의 동작 화면과 콘솔 결과를 기록합니다.
 4. 한 LAB에서 다른 LAB으로 탭을 전환하면 기존 컴포넌트가 언마운트됩니다. Cleanup 결과를 관찰합니다.
 
-
 ## 이해도 확인 질문
+
 1. `setCount(prev => prev + 1)`은 왜 유용한가?
 2. `useEffect(fn, [])`과 `useEffect(fn)`은 어떻게 다른가?
 3. Cleanup은 언제 실행되는가? 개발 환경 StrictMode 영향은?
