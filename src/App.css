@@ -6,7 +6,7 @@
 body {
     margin: 0;
     font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-    background: #f5f7fb;
+    background: #71e950;
     color: #18243a;
 }
 
@@ -48,7 +48,7 @@ body {
 
 .tab {
     border: 1px solid #dfe5f0;
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 14px 12px;
     background: white;
     text-align: left;
@@ -57,6 +57,7 @@ body {
     flex-direction: column;
     gap: 5px;
     color: #32435e;
+    transition: 0.2s;
 }
 
 .tab span {

@@ -72,6 +72,52 @@ if (timerRef.current !== null) return;
 
 먼저 2번은 useEffect를 쓰고, 4번은 useRef를 쓴다는 점에서 큰 차이가 있다. 2번은 타이머를 시작하고 종료하는 데에 running 과 cleanup을 사용하지만, 4번은 시작과 종료 함수를 사용한다. 즉 2번은 이펙트 중심이고 4번은 Ref를 이용하여 직접 관리하는 방식이라는 점에서 차이가 있다.
 
+# Customizing
+
+App.jsx
+
+<h1>React Hooks Playground</h1>
+<p>useEffect · Cleanup · useRef — 4개의 독립된 Lab</p>
+
+<h1>Ori and the blind forest</h1>
+<p>useEffect와 useRef를 활용한 React 실습 프로젝트</p>
+
+App.css
+
+body {
+margin: 0;
+font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+background: #71e950;
+color: #18243a;
+}
+기존 #f5f7fb에서 #71e950; 변경했다
+
+.tab {
+border: 1px solid #dfe5f0;
+border-radius: 16px;
+padding: 14px 12px;
+background: white;
+text-align: left;
+cursor: pointer;
+display: flex;
+flex-direction: column;
+gap: 5px;
+color: #32435e;
+transition: 0.2s;
+}
+
+.tab.active {
+background: #285bc7;
+border-color: #285bc7;
+color: white;
+}
+
+.tab.active span {
+color: #e0eaff;
+}
+
+기존보다 버튼 모서리 둥글게 만들고, LAB 버튼은 파란색 배경과 흰색 글씨로 표시되도록 변경했다.
+
 ## 수행 방법
 
 1. `src/components/` 아래의 LAB 1~4 파일에 있는 `TODO`를 직접 완성합니다.
