@@ -26,12 +26,20 @@ current 속성은 useRef로 객체가 생성되면 그 값을 저장한다. 이 
 # Code Analysis: useEffect와 useRef 관련 주요 코드 각 1개(5~15줄)를 선택하여 동작 원리 설명
 
 useEffect(() => {
-// running이 false면 타이머를 만들지 않음
-// running이 true면 setInterval로 1초마다 count 증가
-// Cleanup에서 clearInterval 호출
-}, [running]);
+console.log('[LAB 1] effect');
 
-useEffect를 이용하여 타이머를 관리한다.
+    const timerId = setInterval(() => {
+        setCount(prev => prev + 1);
+    }, 1000);
+
+    return () => {
+        console.log('[LAB 1] cleanup');
+        clearInterval(timerId);
+    };
+
+}, []);
+
+useEffect를 이용하여 타이머를 관리한다. running을 [] 에 넣어서 그 값이 변경되면 이펙트가 다시 실행되도록 한다. 만약 그 값이 true이면 타이머를 실행하고, false값이면 실행하지 않는다. 마지막으로 클린업을 통해 기존의 타이머 기능을 종료함으로써 중복실행을 방지한다.
 
 ## 수행 방법
 
