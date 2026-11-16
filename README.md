@@ -128,7 +128,15 @@ color: #e0eaff;
 ## 이해도 확인 질문
 
 1. `setCount(prev => prev + 1)`은 왜 유용한가?
+   setCount(count + 1)보다 이전 상태값을 안전하게 사용할 수 있다.
+
 2. `useEffect(fn, [])`과 `useEffect(fn)`은 어떻게 다른가?
+   첫번째건 빈 배열이므로 처음 마운트될 때 실행됨. 두번째건 의존성 배열이 없어서 렌더링될 때마다 실행된다.
+
 3. Cleanup은 언제 실행되는가? 개발 환경 StrictMode 영향은?
+   언마운트될 때, Effect가 실행되기 바로 전 cleanup이 실행된다. StrictMode가 활성화되면 문제 확인을 위해 Effect와 Cleanup이 추가로 실행될 수 있다.
 4. `useState`와 `useRef`의 값 변경 시 렌더링 차이는?
+   값이 변경되었을 때 useState는 리렌더링이 발생하고, useRef는 리렌더링이 발생하지 않는다는 차이다.
+
 5. LAB 2와 LAB 4에서 Timer를 관리하는 방식의 차이는?
+   먼저 2번은 useEffect를 쓰고, 4번은 useRef를 쓴다는 점에서 큰 차이가 있다. 2번은 타이머를 시작하고 종료하는 데에 running 과 cleanup을 사용하지만, 4번은 시작과 종료 함수를 사용한다. 즉 2번은 이펙트 중심이고 4번은 Ref를 이용하여 직접 관리하는 방식이라는 점에서 차이가 있다.
